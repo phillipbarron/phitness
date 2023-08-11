@@ -3,6 +3,7 @@
 ## Todo
 
 * Google Auth
+* local secure config
 * Persistence Layer
 * Audit trail
 * Preferences
