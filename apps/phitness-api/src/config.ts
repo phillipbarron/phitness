@@ -4,12 +4,13 @@ import * as process from "process";
 import * as path from "path";
 
 // checking if .env file is available
-if (fs.existsSync(`${__dirname}/src/.env`)) {
+const consigPath = `${__dirname}/../../../apps/phitness-api/src/.env`;
+if (fs.existsSync(consigPath)) {
 
 
-  dotenv.config({ path: `${__dirname}/src/.env` });
+  dotenv.config({ path: consigPath });
 } else {
-  console.error(__dirname, `${__dirname}/src/.env`);
+  console.error(__dirname, consigPath);
   console.error(".env file not found.");
 }
 
