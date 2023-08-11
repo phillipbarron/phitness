@@ -1,17 +1,14 @@
 import dotenv from "dotenv";
 import fs from "fs";
 import * as process from "process";
-import * as path from "path";
 
 // checking if .env file is available
-const consigPath = `${__dirname}/../../../apps/phitness-api/src/.env`;
-if (fs.existsSync(consigPath)) {
-
-
-  dotenv.config({ path: consigPath });
+const configPath = `${__dirname}/../../../apps/phitness-api/src/.env`;
+if (fs.existsSync(configPath)) {
+  dotenv.config({ path: configPath });
 } else {
-  console.error(__dirname, consigPath);
   console.error(".env file not found.");
+  throw new Error('config not found');
 }
 
 export const PORT = (process.env.PORT || 3000) as number;
