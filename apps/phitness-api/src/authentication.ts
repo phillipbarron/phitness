@@ -5,15 +5,17 @@ import {GOOGLE_AUTH_ID, GOOGLE_AUTH_SECRET} from "./config";
 const GoogleStrategy = passportGoogle.Strategy;
 
 passport.serializeUser((user, done) => {
+  console.log('the user object in the serialise call is ', user)
   done(null, user);
 });
 
-passport.deserializeUser(async (id, done) => {
-  if (id && typeof id === 'object') {
-    const keys = Object.keys(id);
-    const user = { googleId: 'foo', email: 'bar', username: 'baz' }
+passport.deserializeUser(async (user, done) => {
+  if (user && typeof user === 'object') {
+    console.log('the user object in the deserialise call is ', user)
+    const keys = Object.keys(user);
+    const usear = { googleId: 'foo', email: 'bar', username: 'baz' }
 
-    done(null, {...user, ...id});
+    done(null, {...usear, ...user});
   }
 
 });
@@ -26,7 +28,9 @@ passport.use(
       callbackURL: "/auth/google/redirect",
     },
     async (accessToken, refreshToken, profile, done) => {
-      done(null, {googleId: profile.id, email: profile.displayName, username: profile.username});
+      console.log(profile);
+      const emailAddress = profile.emails[0]?.value;
+      done(null, {googleId: profile.id, email: emailAddress || 'boo', username: profile.displayName });
     }
   )
 );

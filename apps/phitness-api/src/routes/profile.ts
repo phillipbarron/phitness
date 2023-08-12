@@ -10,6 +10,7 @@ const checkAuth = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 router.get("/", checkAuth, (req, res) => {
+  console.log(req.user)
   res.render("/home/phill/workspace/phillbarron/apps/phitness-api/src/views/profile.ejs", { user: req.user });
 });
 
