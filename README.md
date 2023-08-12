@@ -1,8 +1,16 @@
 # Phitness
 
+## All very much WIP
+
+### To run the API
+
+```bash
+ npx nx serve phitness-api
+```
+
 ## Todo
 
-* Google Auth
+* Google Auth - **In progress**
 * local secure config
 * Persistence Layer
 * Audit trail
