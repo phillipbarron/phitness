@@ -14,7 +14,7 @@
         "outputPath": "dist/apps/phitness-api",
         "main": "apps/phitness-api/src/main.ts",
         "tsConfig": "apps/phitness-api/tsconfig.app.json",
-        "assets": ["apps/phitness-api/src/assets"],
+        "assets": ["apps/phitness-api/src/assets", "apps/phitness-api/src/views"],
         "isolatedConfig": true,
         "webpackConfig": "apps/phitness-api/webpack.config.js"
       },
