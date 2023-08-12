@@ -13,6 +13,6 @@ if (fs.existsSync(configPath)) {
 
 export const PORT = (process.env.PORT || 3000) as number;
 
-export const { GOOGLE_AUTH_ID, GOOGLE_AUTH_SECRET } = process.env;
+export const { GOOGLE_AUTH_ID, GOOGLE_AUTH_SECRET, COOKIE_KEY } = process.env;
 
 

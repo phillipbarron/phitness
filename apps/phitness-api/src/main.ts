@@ -6,7 +6,7 @@ import "./authentication";
 import passport from "passport";
 const app = express();
 
-import { GOOGLE_AUTH_ID } from './config'
+import { GOOGLE_AUTH_ID, COOKIE_KEY } from './config'
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.set("view engine", "ejs");
@@ -14,7 +14,7 @@ app.set("view engine", "ejs");
 app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
-    keys: ["flapppY_head"],
+    keys: [COOKIE_KEY],
   })
 );
 
@@ -39,6 +39,6 @@ app.get('/authenticate/google', (req, res) => {
 const port = process.env.PORT || 3000;
 
 const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
+  console.log(`Listening at http://localhost:${port}`);
 });
 server.on('error', console.error);
