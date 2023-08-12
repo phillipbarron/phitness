@@ -10,9 +10,10 @@ passport.use(
       clientSecret: GOOGLE_AUTH_SECRET,
       callbackURL: "/auth/google/redirect",
     },
-    (accessToken, refreshToken, profile, done) => {
-      // get profile details
-      // save profile details in db
+    async (accessToken, refreshToken, profile, done) => {
+      console.log({accessToken, refreshToken});
+      console.log(`and the userprofile is ${profile}`);
+      done();
     }
   )
 );
