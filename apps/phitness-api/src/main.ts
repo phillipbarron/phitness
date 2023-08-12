@@ -30,7 +30,7 @@ app.get('/api', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.render(`/home/phill/workspace/phillbarron/apps/phitness-api/src/views/home.ejs`);
+  res.render(`/home/phill/workspace/phillbarron/apps/phitness-api/src/views/home.ejs`, { user: req.user });
 });
 
 
