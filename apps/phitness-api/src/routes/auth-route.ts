@@ -3,9 +3,9 @@ const router = express.Router();
 import passport from "passport";
 router.get("/login", (req, res) => {
   if (req.user) {
-    res.redirect("/home/phill/workspace/phillbarron/apps/phitness-api/src/views/profile.ejs")
+    res.redirect("profile")
   }
-  res.render("/home/phill/workspace/phillbarron/apps/phitness-api/src/views/login.ejs");
+  res.render("login");
 });
 
 

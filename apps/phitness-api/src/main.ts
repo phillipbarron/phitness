@@ -11,7 +11,7 @@ import { GOOGLE_AUTH_ID, COOKIE_KEY } from './config'
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.set("view engine", "ejs");
-
+app.set('views', path.join(__dirname, '../phitness-api/views'))
 app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
@@ -30,7 +30,7 @@ app.get('/api', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.render(`/home/phill/workspace/phillbarron/apps/phitness-api/src/views/home.ejs`, { user: req.user });
+  res.render(`home`, { user: req.user });
 });
 
 
