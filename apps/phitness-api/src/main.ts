@@ -1,6 +1,7 @@
 import express from 'express';
 import * as path from 'path';
 import authRoutes from "./routes/auth-route";
+import profileRoutes from "./routes/profile"
 import cookieSession from "cookie-session";
 import "./authentication";
 import passport from "passport";
@@ -23,6 +24,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/auth", authRoutes);
+app.use("/profile", profileRoutes);
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to phitness-api!' });
 });
