@@ -1,15 +1,27 @@
 import express from 'express';
 import * as path from 'path';
 import authRoutes from "./routes/auth-route";
-
+import cookieSession from "cookie-session";
 import "./authentication";
-
+import passport from "passport";
 const app = express();
 
 import { GOOGLE_AUTH_ID } from './config'
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.set("view engine", "ejs");
+
+app.use(
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: ["flapppY_head"],
+  })
+);
+
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use("/auth", authRoutes);
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to phitness-api!' });
