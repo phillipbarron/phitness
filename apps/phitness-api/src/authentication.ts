@@ -1,23 +1,16 @@
 import passport from "passport";
 import passportGoogle from "passport-google-oauth20";
-import {GOOGLE_AUTH_ID, GOOGLE_AUTH_SECRET} from "./config";
+import { GOOGLE_AUTH_ID, GOOGLE_AUTH_SECRET } from "./config";
+import {isGoogleUser} from "./models/user";
 
 const GoogleStrategy = passportGoogle.Strategy;
 
 passport.serializeUser((user, done) => {
-  console.log('the user object in the serialise call is ', user)
   done(null, user);
 });
 
 passport.deserializeUser(async (user, done) => {
-  if (user && typeof user === 'object') {
-    console.log('the user object in the deserialise call is ', user)
-    const keys = Object.keys(user);
-    const usear = { googleId: 'foo', email: 'bar', username: 'baz' }
-
-    done(null, {...usear, ...user});
-  }
-
+  done(null, isGoogleUser(user) ? user : null);
 });
 
 passport.use(
