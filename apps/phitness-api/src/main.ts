@@ -43,4 +43,10 @@ const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 });
+
+app.get('/flappy', (req, res) => {
+  if (!req.user) return res.redirect('/auth/google')
+  res.send({ message: 'Welcome to phitness-api!' });
+});
+
 server.on('error', console.error);
